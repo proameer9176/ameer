@@ -7,21 +7,79 @@
 </head>
 <body>
     <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Program</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="quiz-container">
-    <h1>Quiz Program</h1>
-    <div id="quiz"></div>
-    <button id="submit">Submit Quiz</button>
-    <div id="result"></div>
-  </div>
-  <script src="script.js"></script>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Simple Quiz</title>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f9f9f9;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+        .quiz-container {
+          background: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          width: 100%;
+          max-width: 500px;
+          text-align: center;
+        }
+        .question {
+          font-size: 1.2em;
+          margin-bottom: 20px;
+        }
+        .options {
+          text-align: left;
+        }
+        .options label {
+          display: block;
+          margin-bottom: 10px;
+        }
+        .button {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 5px;
+          margin-top: 20px;
+        }
+        .button:hover {
+          background-color: #0056b3;
+        }
+        #result {
+          margin-top: 20px;
+          font-weight: bold;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="quiz-container">
+        <h1>Quiz Program</h1>
+        <div id="quiz">
+          <!-- Questions will be loaded dynamically -->
+        </div>
+        <button class="button" id="submit">Submit</button>
+        <div id="result"></div>
+      </div>
+    
+      <script>
+        const quizData = [
+          {
+            question: "What is the capital of France?",
+            options: ["Paris", "London", "Berlin", "Madrid"],
+            correct: "Paris",
+          },
+          {
+            question: "What is 5 + 3?",
 </body>
 </html>
 </body>
