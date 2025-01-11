@@ -6,80 +6,141 @@
     <title>Document</title>
 </head>
 <body>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Simple Quiz</title>
-      <style>
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f9f9f9;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .quiz-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+    .options {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>JavaScript Quiz</h1>
+    <div id="quiz">
+      <!-- Questions will be inserted here dynamically -->
+    </div>
+    <button id="submit">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Berlin", "Madrid"],
+        correct: "Paris",
+      },
+      {
+        question: "What is 5 + 3?",
+        options: ["5", "8", "7", "10"],
+        correct: "8",
+      },
+      {
+        question: "Who wrote 'Romeo and Juliet'?",
+        options: ["Charles Dickens", "J.K. Rowling", "William Shakespeare", "Mark Twain"],
+        correct: "William Shakespeare",
+      },
+    ];
+
+    const quizContainer = document.getElementById("quiz");
+    const submitButton = document.getElementById("submit");
+    const resultContainer = document.getElementById("result");
+
+    // Function to Load Questions
+    function loadQuiz() {
+      quizData.forEach((item, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+
+        questionDiv.innerHTML = `
+          <h3>${index + 1}. ${item.question}</h3>
+          <div class="options">
+            ${item.options.map((option) => `
+              <label>
+                <input type="radio" name="question${index}" value="${option}">
+                ${option}
+              </label>
+            `).join('')}
+          </div>
+        `;
+
+        quizContainer.appendChild(questionDiv);
+      });
+    }
+
+    // Function to Check Answers
+    function checkAnswers() {
+      let score = 0;
+
+      quizData.forEach((item, index) => {
+        const selectedOption = document.querySelector(input[name="question${index}"]:checked);
+
+        if (selectedOption && selectedOption.value === item.correct) {
+          score++;
         }
-        .quiz-container {
-          background: #fff;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          width: 100%;
-          max-width: 500px;
-          text-align: center;
-        }
-        .question {
-          font-size: 1.2em;
-          margin-bottom: 20px;
-        }
-        .options {
-          text-align: left;
-        }
-        .options label {
-          display: block;
-          margin-bottom: 10px;
-        }
-        .button {
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          cursor: pointer;
-          border-radius: 5px;
-          margin-top: 20px;
-        }
-        .button:hover {
-          background-color: #0056b3;
-        }
-        #result {
-          margin-top: 20px;
-          font-weight: bold;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="quiz-container">
-        <h1>Quiz Program</h1>
-        <div id="quiz">
-          <!-- Questions will be loaded dynamically -->
-        </div>
-        <button class="button" id="submit">Submit</button>
-        <div id="result"></div>
-      </div>
-    
-      <script>
-        const quizData = [
-          {
-            question: "What is the capital of France?",
-            options: ["Paris", "London", "Berlin", "Madrid"],
-            correct: "Paris",
-          },
-          {
-            question: "What is 5 + 3?",
+      });
+
+      resultContainer.textContent = You scored ${score} out of ${quizData.length};
+    }
+
+    // Add Event Listener
+    submitButton.addEventListener("click", checkAnswers);
+
+    // Load Quiz on Page Load
+    loadQuiz();
+  </script>
+</body>
+</html>
 </body>
 </html>
 </body>
