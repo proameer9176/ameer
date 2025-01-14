@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'salon_booking';
+$dbname = 'ameer';
 $username = 'root';
 $password = '';
 
